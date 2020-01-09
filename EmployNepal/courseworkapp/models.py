@@ -6,5 +6,5 @@ class Job(models.Model):
     job_Catagory= models.CharField(max_length=40)
 
     def __str__(self):
-        return  self.job_Title + " " + self.job_discription+" "+ self.job_Catagory
+        return self.job_Title + " " + self.job_discription+" "+ self.job_Catagory
 

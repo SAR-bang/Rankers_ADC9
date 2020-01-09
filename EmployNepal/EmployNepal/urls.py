@@ -21,7 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
     path('delete/<int:ID>',view_Jobdata_delete),
-    path('EmployNepal/update/<int:ID>',view_update_PostJob),
+    path('edit/<int:ID>',view_Jobdata_updateform),
+    path('update/<int:ID>',view_update_PostJob),
 
 ]
 
