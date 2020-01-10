@@ -7,7 +7,7 @@
     <title>Update Job </title>
 </head>
 <body>
-    {% for job in Jobs %}
+    {% if Job %}
     <form method="POST" action="update/{{Job.id}}">
         {% csrf_token %}
         Update job_Title: <input name="job_Title" type="text" value ={{Job.job_Title}}> <br>
@@ -15,6 +15,7 @@
         Update job_Catagory: <input name="job_Catagory" type="text" value={{Job.job_Catagory}}> <br>
         <input type="submit">
     </form>
+    {% endif %}
 
 </body>
 </html>

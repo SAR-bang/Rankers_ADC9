@@ -22,7 +22,7 @@ urlpatterns = [
     path('',index),
     path('delete/<int:ID>',view_Jobdata_delete),
     path('edit/<int:ID>',view_Jobdata_updateform),
-    path('update/<int:ID>',view_update_PostJob),
+    path('edit/update/<int:ID>',view_update_PostJob),
 
 ]
 
