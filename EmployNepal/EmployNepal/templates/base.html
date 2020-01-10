@@ -36,12 +36,12 @@
                     <a class="nav-link" href="#">Jobs <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Upload Resume</a>
+                    <a class="nav-link" href="{% url 'uploadResume' %}">Upload Resume</a>
                 </li>
 
             </ul>
-            <form class="form-inline my-4">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-4" method="GET" action="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by resume name" aria-label="Search" name= "Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
