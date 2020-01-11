@@ -23,6 +23,7 @@ from courseworkapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
+    path('search',views.searchResume),
     
 ]
 

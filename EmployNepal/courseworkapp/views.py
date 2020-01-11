@@ -17,7 +17,9 @@ def save(request):
         print( get_job_Catagory)
         Job_obj = Job(job_Title=get_job_Title,job_discription=get_job_discription,job_Catagory=get_job_Catagory)
         Job_obj.save()
-        return render(request,'index.html')
+        return render(request,"index.html",{
+        'Jobs':Job.objects.all()
+        })
     else:
         return HttpResponse("Error record saving")
 
@@ -66,7 +68,7 @@ def save_Resume(request):
 
         name_resume = fs.save(get_resume.name, get_resume)
         name_image = fs.save(get_image.name, get_image)
-        
+         
         print(fs.url(name_resume))
 
         form = Resume( name = get_name, user = get_user  , resume = get_resume, resume_QRcode = get_image)
