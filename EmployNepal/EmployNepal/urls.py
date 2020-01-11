@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import *
+from django.conf.urls.static import static
+from django.conf import settings
+from courseworkapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
-    path('delete/<int:ID>',view_Jobdata_delete),
-    path('edit/<int:ID>',view_Jobdata_updateform),
-    path('edit/update/<int:ID>',view_update_PostJob),
-
+    
 ]
 
 urlpatterns += [
@@ -33,3 +33,5 @@ urlpatterns += [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+# important to serve the files
+

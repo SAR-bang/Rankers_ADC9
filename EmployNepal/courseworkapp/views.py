@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Job
+from .models import *
+from django.core.files.storage import FileSystemStorage
 
 def create_job(request):
     return render(request,'create_job.html')
@@ -21,7 +22,36 @@ def save(request):
         return HttpResponse("Error record saving")
 
 
+def view_Jobdata_delete(request, ID):
+    print(ID)
+    Jobs= Job.objects.get(id=ID)
+    print(Jobs)
+    Jobs.delete()
+    return render(request,"index.html",{
+        'Jobs':Job.objects.all()
+    }) 
 
+def view_Jobdata_updateform(request,ID):
+    print(ID)
+    Jobs= Job.objects.get(id=ID)
+    print(Jobs)
+    context_varible = {
+        'Job':Jobs
+    }
+    return render(request,'update_job.html',context_varible)
+
+
+def view_update_PostJob(request,ID):
+    Jobs= Job.objects.get(id=ID)
+    print(Jobs)
+    Jobs.job_Title = request.POST['job_Title']
+    Jobs.job_discription =request.POST['job_discription']
+    Jobs.job_Catagory = request.POST['job_Catagory']
+    print(Jobs)
+    Jobs.save()
+    return render(request,"index.html",{
+        'Jobs':Job.objects.all()
+    })
 def upload_Resume(request):
     return render(request, 'resume.html')
 
@@ -42,6 +72,9 @@ def save_Resume(request):
         form = Resume( name = get_name, user = get_user  , resume = get_resume, resume_QRcode = get_image)
         form.save()
 
+        # uploaded_resume = request.FILES['Resume']
+        
+        # context['url'] = fs.url(name)
     else:
         form = Resume()
     return render(request, 'resume.html', {'form':form})
