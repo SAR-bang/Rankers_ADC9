@@ -25,9 +25,6 @@ def save_Resume(request):
         form = Resume( name = get_name, user = get_user  , resume = get_resume, resume_QRcode = get_image)
         form.save()
 
-        # uploaded_resume = request.FILES['Resume']
-        
-        # context['url'] = fs.url(name)
     else:
         form = Resume()
     return render(request, 'resume.html', {'form':form})
@@ -48,5 +45,4 @@ def searchResume(request):
 
     print(obj)
 
-    # return HttpResponse("record display")
     return render(request, 'resumelist.html', {'pdfs':obj})
